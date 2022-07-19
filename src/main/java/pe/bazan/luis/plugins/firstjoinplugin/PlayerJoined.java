@@ -31,6 +31,10 @@ public class PlayerJoined {
     return lastJoin;
   }
 
+  public void saveLast(CustomYML db) {
+    db.setField(name + ".lastJoin", System.currentTimeMillis());
+  }
+
   public static PlayerJoined getInstance(CustomYML db, String name) {
     return new PlayerJoined(
             name,
