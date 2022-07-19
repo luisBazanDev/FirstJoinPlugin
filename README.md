@@ -4,7 +4,7 @@ for the first time
 
 ## Set-up development
 1. First add the JitPack repository to your build file.
-```maven
+```xml
 <repositories>
 	<repository>
 	<id>jitpack.io</id>
@@ -13,7 +13,7 @@ for the first time
 </repositories>
 ```
 2. Add the dependency
-```maven
+```xml
 <dependency>
 	<groupId>com.github.luisBazanDev</groupId>
 	<artifactId>FirstJoinPlugin</artifactId>
