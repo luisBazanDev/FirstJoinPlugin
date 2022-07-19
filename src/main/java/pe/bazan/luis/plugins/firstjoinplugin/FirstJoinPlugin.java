@@ -3,15 +3,34 @@ package pe.bazan.luis.plugins.firstjoinplugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class FirstJoinPlugin extends JavaPlugin {
+  private CustomYML db;
+  private CustomYML customConfig;
 
   @Override
   public void onEnable() {
     // Plugin startup logic
+    getLogger().info("Enabling plugin...");
+    reloadFiles();
+    getLogger().info("Enabled plugin!");
+  }
 
+  public void reloadFiles() {
+    this.customConfig = null;
+    this.db = null;
+    this.customConfig = new CustomYML("config", this);
+    this.db = new CustomYML("db", this);
   }
 
   @Override
   public void onDisable() {
     // Plugin shutdown logic
+  }
+
+  public CustomYML getCustConf() {
+    return customConfig;
+  }
+
+  public CustomYML getDb() {
+    return db;
   }
 }
