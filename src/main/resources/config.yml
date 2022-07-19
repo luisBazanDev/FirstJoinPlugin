@@ -1,1 +1,20 @@
+# Plugin replace Placeholders?
+placeholder-api: false
+
+# Is used in variable %server%
+server-name: "Luis's server"
+
+############ Messages and Commands ##############
+# %player% - Is replaced by the player's name   #
+# %server% - Is replaced by the server's name   #
+#################################################
+messages:
+  - "&f#############################################"
+  - "&a     Hi &2%player%&a welcome to the %server%!"
+  - "&6       We hope you have a good time!"
+  - "&f#############################################"
+commands:
+  - "say Hey everyone, %player% is new here!"
+
+# Here save serialized items
 items: []
