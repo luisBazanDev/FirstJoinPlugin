@@ -1,6 +1,8 @@
 package pe.bazan.luis.plugins.firstjoinplugin;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import pe.bazan.luis.plugins.firstjoinplugin.listeners.PlayerFirstJoin;
+import pe.bazan.luis.plugins.firstjoinplugin.listeners.PlayerJoin;
 
 public final class FirstJoinPlugin extends JavaPlugin {
   private CustomYML db;
@@ -11,6 +13,8 @@ public final class FirstJoinPlugin extends JavaPlugin {
     // Plugin startup logic
     getLogger().info("Enabling plugin...");
     reloadFiles();
+    new PlayerJoin(this);
+    new PlayerFirstJoin(this);
     getLogger().info("Enabled plugin!");
   }
 
