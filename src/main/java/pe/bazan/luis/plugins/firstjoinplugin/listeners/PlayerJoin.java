@@ -18,6 +18,7 @@ public class PlayerJoin implements Listener {
 
   @EventHandler
   public void onPlayerJoin(PlayerJoinEvent e) {
+    e.setJoinMessage(plugin.getCustConf().getConfigField("msg-join"));
     final PlayerJoined playerJoined = PlayerJoined.getInstance(plugin.getDb(), e.getPlayer().getName());
     if(!playerJoined.isFirstJoin()) {
       playerJoined.saveLast(plugin.getDb());

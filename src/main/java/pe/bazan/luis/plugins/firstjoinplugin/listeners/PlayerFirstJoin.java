@@ -48,6 +48,7 @@ public class PlayerFirstJoin implements Listener {
   }
 
   public static class Event extends org.bukkit.event.@NotNull Event {
+    private static HandlerList handlerList = new HandlerList();
     PlayerJoined playerJoined;
     public Event(PlayerJoined playerJoined) {
       this.playerJoined = playerJoined;
@@ -62,8 +63,11 @@ public class PlayerFirstJoin implements Listener {
     }
 
     @Override
-    public @NotNull HandlerList getHandlers() {
-      return null;
+    public HandlerList getHandlers() {
+      return handlerList;
+    }
+    public static HandlerList getHandlerList() {
+      return handlerList;
     }
   }
 }
