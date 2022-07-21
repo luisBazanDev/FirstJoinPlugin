@@ -1,6 +1,7 @@
 package pe.bazan.luis.plugins.firstjoinplugin;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import pe.bazan.luis.plugins.firstjoinplugin.commands.FirstJoin;
 import pe.bazan.luis.plugins.firstjoinplugin.listeners.PlayerFirstJoin;
 import pe.bazan.luis.plugins.firstjoinplugin.listeners.PlayerJoin;
 
@@ -15,6 +16,7 @@ public final class FirstJoinPlugin extends JavaPlugin {
     reloadFiles();
     new PlayerJoin(this);
     new PlayerFirstJoin(this);
+    new FirstJoin(this);
     getLogger().info("Enabled plugin!");
   }
 

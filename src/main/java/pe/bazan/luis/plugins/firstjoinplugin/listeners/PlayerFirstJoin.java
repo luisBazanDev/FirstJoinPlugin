@@ -1,17 +1,22 @@
 package pe.bazan.luis.plugins.firstjoinplugin.listeners;
 
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.util.io.BukkitObjectInputStream;
 import org.jetbrains.annotations.NotNull;
 import pe.bazan.luis.plugins.firstjoinplugin.FirstJoinPlugin;
 import pe.bazan.luis.plugins.firstjoinplugin.Formatter;
 import pe.bazan.luis.plugins.firstjoinplugin.PlayerJoined;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 
 public class PlayerFirstJoin implements Listener {
@@ -24,9 +29,18 @@ public class PlayerFirstJoin implements Listener {
 
   @EventHandler
   public void onFirstJoin(Event e) {
-    List<String> items = plugin.getCustConf().getConfigField("messages");
-    items.forEach((item) -> {
-
+    ConfigurationSection items = plugin.getCustConf().getConfigField("items");
+    items.getKeys(false).forEach((slot) -> {
+      String item = plugin.getCustConf().getConfigField("items."+slot);
+      try {
+        byte[] decode = Base64.getDecoder().decode(item);
+        ByteArrayInputStream in = new ByteArrayInputStream(decode);
+        BukkitObjectInputStream is = new BukkitObjectInputStream(in);
+        ItemStack itemStack = (ItemStack) is.readObject();
+        e.getPlayer().getInventory().setItem(Integer.valueOf(slot), itemStack);
+      } catch (IOException | ClassNotFoundException ex) {
+        ex.printStackTrace();
+      }
     });
 
     List<String> commands = plugin.getCustConf().getConfigField("commands");
