@@ -5,8 +5,7 @@ placeholder-api: false
 server-name: "Luis's server"
 
 # This message is always sent to all players when a player joins
-msg-join:
-  - "&e%player% joined the game"
+msg-join: "&e%player% joined the game"
 
 ############ Messages and Commands ##############
 # %player% - Is replaced by the player's name   #
