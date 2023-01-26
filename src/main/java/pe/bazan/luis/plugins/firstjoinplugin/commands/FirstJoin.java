@@ -5,6 +5,7 @@ import dev.jorel.commandapi.arguments.IntegerArgument;
 import dev.jorel.commandapi.arguments.StringArgument;
 import dev.jorel.commandapi.executors.ExecutorType;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.io.BukkitObjectOutputStream;
@@ -31,7 +32,7 @@ public class FirstJoin {
           .executesPlayer((sender, args) -> {
             ItemStack itemStack = sender.getInventory().getItemInMainHand();
             if(itemStack == null || itemStack.getType().equals(Material.AIR)) {
-              sender.sendMessage(Formatter.format("&cItem undefined, please place item in your main hand."));
+              sender.sendMessage(Formatter.formatPlaceHolders(sender, "&cItem undefined, please place item in your main hand."));
               return;
             }
             String encodeObject;
@@ -44,12 +45,12 @@ public class FirstJoin {
               byte[] serializedObject = io.toByteArray();
               encodeObject = Base64.getEncoder().encodeToString(serializedObject);
             } catch (IOException e) {
-              sender.sendMessage(Formatter.format("&cError serializing this item"));
+              sender.sendMessage(Formatter.formatPlaceHolders(sender, "&cError serializing this item"));
               e.printStackTrace();
               return;
             }
             plugin.getCustConf().setField("items." + args[0], encodeObject);
-            sender.sendMessage(Formatter.format("&aSuccessfully, save this item."));
+            sender.sendMessage(Formatter.formatPlaceHolders(sender, "&aSuccessfully, save this item."));
           });
 
   CommandAPICommand items = new CommandAPICommand("items")

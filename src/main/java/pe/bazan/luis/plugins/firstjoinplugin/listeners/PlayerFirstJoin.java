@@ -57,7 +57,7 @@ public class PlayerFirstJoin implements Listener {
     messages.forEach((line) -> {
       line = line.replaceAll("%player%", e.getPlayer().getName());
       line = line.replaceAll("%server%", plugin.getCustConf().getConfigField("server-name"));
-      e.getPlayer().sendMessage(Formatter.format(line));
+      e.getPlayer().sendMessage(Formatter.formatPlaceHolders(e.getPlayer(), line));
     });
   }
 
