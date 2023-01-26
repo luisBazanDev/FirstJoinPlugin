@@ -4,4 +4,5 @@ main: pe.bazan.luis.plugins.firstjoinplugin.FirstJoinPlugin
 api-version: 1.19
 authors: [ "Luis Bazán" ]
 depend: [ CommandAPI ]
+softdepend: [ PlaceholderAPI ]
 description: A minecraft plugin to be able to easily configure basic things that are executed when a player logs in for the first time
