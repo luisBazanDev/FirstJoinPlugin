@@ -2,11 +2,8 @@ package pe.bazan.luis.plugins.firstjoinplugin.commands;
 
 import dev.jorel.commandapi.CommandAPICommand;
 import dev.jorel.commandapi.arguments.IntegerArgument;
-import dev.jorel.commandapi.arguments.StringArgument;
 import dev.jorel.commandapi.executors.ExecutorType;
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.io.BukkitObjectOutputStream;
 import pe.bazan.luis.plugins.firstjoinplugin.FirstJoinPlugin;
@@ -49,7 +46,7 @@ public class FirstJoin {
               e.printStackTrace();
               return;
             }
-            plugin.getCustConf().setField("items." + args[0], encodeObject);
+            plugin.getCustConf().setField("items." + args.get(0), encodeObject);
             sender.sendMessage(Formatter.formatPlaceHolders(sender, "&aSuccessfully, save this item."));
           });
 
